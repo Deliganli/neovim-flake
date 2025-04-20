@@ -152,6 +152,11 @@
 
         metals = {
           enable = true;
+          extraOptions = {
+            init_options = {
+              statusBarProvider = "on";
+            };
+          };
           rootDir.__raw = ''
             require("lspconfig.util").root_pattern(
               'build.sbt',

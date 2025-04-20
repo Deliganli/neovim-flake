@@ -2,6 +2,10 @@
 {
   extraConfigLuaPre = # lua
     ''
+      -- reduce press to enter messages
+      vim.opt.shortmess:remove("F")
+      vim.opt.shortmess:append("c")
+
       -- try to show numbers on first window open
       vim.wo.number = true
       vim.wo.signcolumn = "yes"
