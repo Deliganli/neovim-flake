@@ -300,11 +300,12 @@
     cmp = {
       enable = true;
       settings = {
-        # experimental = {
-        #   ghost_text = true;
-        # };
         snippet = {
-          expand = "luasnip";
+          expand = ''
+            function(args)
+              require('luasnip').lsp_expand(args.body)
+            end
+          '';
         };
         formatting = {
           fields = [
@@ -313,8 +314,13 @@
             "menu"
           ];
         };
+        performance = {
+          debounce = 60;
+          fetchingTimeout = 200;
+          maxViewEntries = 30;
+        };
         completion = {
-          completeopt = "menu,menuone";
+          completeopt = "menu,menuone,noinsert";
         };
         sources = [
           {
