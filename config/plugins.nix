@@ -234,6 +234,10 @@
         };
       };
     };
+
+    friendly-snippets = {
+      enable = true;
+    };
   };
 
   colorschemes.onedark = {
@@ -245,7 +249,6 @@
 
   extraPlugins = with pkgs.vimPlugins; [
     quick-scope
-    friendly-snippets # not sure if this works
     clipboard-image-nvim
     outline-nvim
   ];
