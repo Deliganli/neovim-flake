@@ -21,9 +21,6 @@
           yamllint = {
             enable = true;
           };
-          deadnix = {
-            enable = true;
-          };
           markdownlint = {
             enable = true;
           };
