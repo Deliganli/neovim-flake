@@ -196,18 +196,20 @@
           };
           settings =
             let
-              flake = ''(builtins.getFlake (toString ./.))'';
-              # host = config.networking.hostName;
-              host = "hors"; # TODO - make it generic
-              system = ''''${builtins.currentSystem}'';
+              # TODO - find out how to make those option
+              host = "hors";
+              system = pkgs.system;
+              flakeOf = dir: ''(builtins.getFlake "/home/deliganli/projects/deliganli/${dir}")'';
             in
             {
-              nixpkgs.expr = "import ${flake}.inputs.nixpkgs {}";
+              nixpkgs = {
+                expr = "import ${flakeOf "nix"}.inputs.nixpkgs { }";
+              };
               options = rec {
-                nixos.expr = "${flake}.nixosConfigurations.${host}.options";
+                nixos.expr = ''${flakeOf "nix"}.nixosConfigurations.${host}.options'';
+                nixvim.expr = ''${flakeOf "neovim-flake"}.nixvimConfigurations.${system}.default.options'';
                 home-manager.expr = "${nixos.expr}.home-manager.users.type.getSubOptions [ ]";
-                microvm.expr = "${flake}.inputs.microvm.outputs.nixosModules.microvm-options";
-                nixvim.expr = ''${flake}.packages.${system}.nvim.options'';
+                microvm.expr = "${flakeOf "nix"}.inputs.microvm.outputs.nixosModules.microvm-options";
               };
             };
         };
