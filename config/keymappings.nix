@@ -338,5 +338,16 @@
         desc = "save all buffers";
       };
     }
+    {
+      mode = "n";
+      key = "gK";
+      action.__raw = ''
+        function()
+           local new_config = not vim.diagnostic.config().virtual_lines
+           vim.diagnostic.config({ virtual_lines = new_config })
+         end
+      '';
+      options.desc = "Toggle diagnostic virtual_lines";
+    }
   ];
 }
