@@ -65,6 +65,7 @@
           nix = [ "nixfmt" ];
           rust = [ "rustfmt" ];
           sbt = [ "scalafmt" ];
+          scala = [ "scalafmt" ];
           xml = [ "xmlformat" ];
           javascript = [ "prettierd" ];
           sql = [ "sqlfluff" ];
