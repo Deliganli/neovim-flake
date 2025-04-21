@@ -313,14 +313,6 @@
       options.desc = "Toggle Markview";
     }
 
-    # Glow
-    {
-      mode = "n";
-      key = "<leader>mg";
-      action = "<cmd>Glow<cr>";
-      options.desc = "Toggle Glow";
-    }
-
     # others
     {
       mode = "n";

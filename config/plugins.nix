@@ -1,9 +1,5 @@
 { pkgs, ... }:
 {
-  dependencies = {
-    glow.enable = true;
-  };
-
   plugins = {
     barbar = {
       enable = true;
@@ -133,14 +129,6 @@
 
     markview = {
       enable = true;
-    };
-
-    glow = {
-      enable = true;
-      settings = {
-        border = "single";
-        style = "dark";
-      };
     };
 
     plantuml-syntax = {
