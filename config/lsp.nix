@@ -56,19 +56,26 @@
         default_format_opts = {
           lsp_format = "fallback";
         };
-        formatters_by_ft = {
-          md = [ "markdownlint" ];
-          lua = [ "stylua" ];
-          nix = [ "nixfmt" ];
-          rust = [ "rustfmt" ];
-          sbt = [ "scalafmt" ];
-          scala = [ "scalafmt" ];
-          xml = [ "xmlformat" ];
-          javascript = [ "prettierd" ];
-          sql = [ "sqlfluff" ];
-          typ = [ "typstyle" ];
-          "*" = [ "trim_whitespace" ];
-        };
+        formatters_by_ft =
+          let
+            scalafmt = {
+              __unkeyed-1 = "scalafmt";
+              lsp_format = "prefer";
+            };
+          in
+          {
+            sbt = scalafmt;
+            scala = scalafmt;
+            md = [ "markdownlint" ];
+            lua = [ "stylua" ];
+            nix = [ "nixfmt" ];
+            rust = [ "rustfmt" ];
+            xml = [ "xmlformat" ];
+            javascript = [ "prettierd" ];
+            sql = [ "sqlfluff" ];
+            typ = [ "typstyle" ];
+            "*" = [ "trim_whitespace" ];
+          };
         formatters = {
           rustfmt = {
             command = lib.getExe pkgs.rustfmt;
