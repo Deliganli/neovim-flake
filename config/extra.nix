@@ -16,8 +16,6 @@
       require("telescope").load_extension("lazygit")
       require("outline").setup()
 
-      luasnip = require("luasnip")
-
       local cmp = require("cmp")
 
       -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
@@ -43,12 +41,6 @@
         }, {
           { name = "cmdline" },
         }),
-        -- formatting = {
-        --   format = function(_, vim_item)
-        --     vim_item.kind = cmdIcons[vim_item.kind] or "FOO"
-        --     return vim_item
-        --   end
-        -- }
       })
     '';
 }
