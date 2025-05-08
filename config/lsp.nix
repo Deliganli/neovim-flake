@@ -43,9 +43,9 @@
             };
           };
         };
-        completion = {
-          luasnip.enable = true;
-        };
+        # completion = {
+        #   luasnip.enable = true;
+        # };
       };
     };
 
