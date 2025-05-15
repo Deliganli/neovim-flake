@@ -41,11 +41,13 @@
         { system, ... }:
         {
           # You can define actual Nixvim configurations here
-          nixvimConfigurations = {
-            default = inputs.nixvim.lib.evalNixvim {
+          nixvimConfigurations = rec {
+            nvim-ide = inputs.nixvim.lib.evalNixvim {
               inherit system;
               modules = [ self.nixvimModules.default ];
             };
+
+            default = nvim-ide;
           };
         };
     };

@@ -1,10 +1,9 @@
 { ... }:
 {
   imports = [
-    ./extra.nix
+    ./general.nix
     ./keymappings.nix
     ./lsp.nix
-    ./options.nix
     ./plugins.nix
   ];
 }
