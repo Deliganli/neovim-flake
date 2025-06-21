@@ -139,40 +139,6 @@
       enable = true;
     };
 
-    telescope = {
-      enable = true;
-      extensions = {
-        fzf-native = {
-          enable = true;
-        };
-        live-grep-args = {
-          enable = true;
-          settings = {
-            auto_quoting = true;
-            mappings = {
-              i = {
-                "<C-j>" = {
-                  __raw = ''
-                    require("telescope-live-grep-args.actions").quote_prompt({ postfix = " --iglob " })
-                  '';
-                };
-                "<C-k>" = {
-                  __raw = ''
-                    require("telescope-live-grep-args.actions").quote_prompt()
-                  '';
-                };
-                "<C-space>" = {
-                  __raw = ''
-                    require("telescope.actions").to_fuzzy_refine
-                  '';
-                };
-              };
-            };
-          };
-        };
-      };
-    };
-
     nvim-tree = {
       enable = true;
       disableNetrw = true;
@@ -211,7 +177,6 @@
       enable = true;
       filetypesDenylist = [
         "Outline"
-        "TelescopePrompt"
         "alpha"
         "reason"
       ];

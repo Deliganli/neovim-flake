@@ -162,15 +162,6 @@
               statusBarProvider = "on";
             };
           };
-          rootDir.__raw = ''
-            require("lspconfig.util").root_pattern(
-              'build.sbt',
-              'build.sc',
-              'build.gradle',
-              'pom.xml',
-              'project.scala'
-            )
-          '';
         };
 
         # TOML
@@ -286,14 +277,14 @@
           {
             key = "<leader>ds";
             action.__raw = ''
-              require('telescope.builtin').lsp_document_symbols
+              require('fzf-lua').lsp_document_symbols
             '';
             options.desc = "document symbols";
           }
           {
             key = "<leader>ws";
             action.__raw = ''
-              require('telescope.builtin').lsp_dynamic_workspace_symbols
+              require('fzf-lua').lsp_live_workspace_symbols
             '';
             options.desc = "workspace symbols";
           }

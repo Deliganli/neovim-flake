@@ -45,7 +45,7 @@
     ];
   };
 
-  diagnostics = {
+  diagnostic.settings = {
     update_in_insert = true;
     severity_sort = true;
     virtual_text = true;
@@ -96,7 +96,6 @@
 
   extraConfigLua = # lua
     ''
-      require("telescope").load_extension("lazygit")
       require("outline").setup()
 
       local cmp = require("cmp")

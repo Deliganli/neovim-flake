@@ -48,46 +48,6 @@
       };
     }
 
-    # telescope
-    {
-      action.__raw = ''
-        require("telescope").extensions.live_grep_args.live_grep_args
-      '';
-      key = "<leader>fr";
-    }
-    {
-      action = "<cmd>Telescope find_files<CR>";
-      key = "<leader>ff";
-    }
-    {
-      action = "<cmd>Telescope git_bcommits<CR>";
-      key = "<leader>fg";
-    }
-    {
-      action = "<cmd>Telescope oldfiles<CR>";
-      key = "<leader>fh";
-    }
-    {
-      action = "<cmd>Telescope colorscheme<CR>";
-      key = "<leader>ch";
-    }
-    {
-      action = "<cmd>Telescope man_pages<CR>";
-      key = "<leader>fm";
-    }
-    {
-      action = "<cmd>Telescope buffers<CR>";
-      key = "<leader>fb";
-    }
-    {
-      action = "<cmd>Telescope keymaps<CR>";
-      key = "<leader>fk";
-    }
-    {
-      action = "<cmd>Telescope commands<CR>";
-      key = "<leader>fc";
-    }
-
     # auto-session
     {
       mode = "n";
