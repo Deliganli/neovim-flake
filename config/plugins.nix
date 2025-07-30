@@ -214,7 +214,6 @@
 
   extraPlugins = with pkgs.vimPlugins; [
     quick-scope
-    clipboard-image-nvim
     outline-nvim
   ];
 }
