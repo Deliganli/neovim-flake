@@ -217,7 +217,7 @@
         };
         lspBuf = {
           K = "hover";
-          gr = "references";
+          grr = "references";
           gd = "definition";
           gD = "declaration";
           gi = "implementation";
@@ -287,6 +287,13 @@
               require('fzf-lua').lsp_live_workspace_symbols
             '';
             options.desc = "workspace symbols";
+          }
+          {
+            key = "<leader>grr";
+            action.__raw = ''
+              require('fzf-lua').lsp_references
+            '';
+            options.desc = "LSP references";
           }
         ];
       };
