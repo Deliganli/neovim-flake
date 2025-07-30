@@ -20,6 +20,8 @@
     list = true; # Show tab, trailing spaces etc
     spell = true; # Spellcheck
     laststatus = 3; # Always visible
+    winborder = "rounded";
+    swapfile = false;
 
     # Search
     ignorecase = true;
