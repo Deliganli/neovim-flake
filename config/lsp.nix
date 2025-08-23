@@ -50,14 +50,15 @@
             flakeOf = dir: "(builtins.getFlake \"/home/deliganli/projects/deliganli/${dir}\")";
           in
           {
-            offset_encoding = "utf-8";
-            nixpkgs = {
-              expr = "import ${flakeOf "nix"}.inputs.nixpkgs { }";
-            };
-            options = rec {
-              nixos.expr = "${flakeOf "nix"}.nixosConfigurations.${host}.options";
-              nixvim.expr = "${flakeOf "neovim-flake"}.nixvimConfigurations.${system}.default.options";
-              home-manager.expr = "${nixos.expr}.home-manager.users.type.getSubOptions [ ]";
+            settings.nixd = {
+              nixpkgs = {
+                expr = "import ${flakeOf "nix"}.inputs.nixpkgs { }";
+              };
+              options = rec {
+                nixos.expr = "${flakeOf "nix"}.nixosConfigurations.${host}.options";
+                nixvim.expr = "${flakeOf "neovim-flake"}.nixvimConfigurations.${system}.default.options";
+                home-manager.expr = "${nixos.expr}.home-manager.users.type.getSubOptions [ ]";
+              };
             };
           };
       };
