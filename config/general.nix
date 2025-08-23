@@ -41,8 +41,8 @@
 
     # Have a better completion experience
     completeopt = [
+      "menu"
       "menuone"
-      "noselect"
       "noinsert"
     ];
   };
