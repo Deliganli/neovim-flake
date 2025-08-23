@@ -4,6 +4,164 @@
   ...
 }:
 {
+  lsp = {
+    inlayHints.enable = true;
+
+    servers = {
+      ts_ls.enable = true; # TS/JS
+      cssls.enable = true; # CSS
+      tailwindcss.enable = true; # TailwindCSS
+      html.enable = true; # HTML
+      pyright.enable = true; # Python
+      marksman.enable = true; # Markdown
+      dockerls.enable = true; # Docker
+      bashls.enable = true; # Bash
+      clangd.enable = true; # C/C++
+      yamlls.enable = true; # YAML
+      jsonls.enable = true; # Json
+      ansiblels.enable = true; # Ansible
+      jdtls.enable = true; # Java
+      tinymist.enable = true; # Typst
+      taplo.enable = true; # TOML
+      rust_analyzer.enable = true; # Rust
+
+      metals = {
+        enable = true;
+        settings = {
+          init_options = {
+            statusBarProvider = "on";
+          };
+        };
+      };
+
+      lua_ls = {
+        enable = true;
+        settings.telemetry.enable = false;
+      };
+
+      # Nix
+      nixd = {
+        enable = true;
+        settings =
+          let
+            # TODO - find out how to make those option
+            host = "hors";
+            system = pkgs.system;
+            flakeOf = dir: "(builtins.getFlake \"/home/deliganli/projects/deliganli/${dir}\")";
+          in
+          {
+            offset_encoding = "utf-8";
+            nixpkgs = {
+              expr = "import ${flakeOf "nix"}.inputs.nixpkgs { }";
+            };
+            options = rec {
+              nixos.expr = "${flakeOf "nix"}.nixosConfigurations.${host}.options";
+              nixvim.expr = "${flakeOf "neovim-flake"}.nixvimConfigurations.${system}.default.options";
+              home-manager.expr = "${nixos.expr}.home-manager.users.type.getSubOptions [ ]";
+            };
+          };
+      };
+    };
+
+    keymaps = [
+      {
+        key = "K";
+        lspBufAction = "hover";
+      }
+      {
+        key = "gd";
+        lspBufAction = "definition";
+      }
+      {
+        key = "gD";
+        lspBufAction = "declaration";
+      }
+      {
+        key = "gR";
+        lspBufAction = "references";
+      }
+      {
+        key = "gi";
+        lspBufAction = "implementation";
+      }
+      {
+        key = "gt";
+        lspBufAction = "type_definition";
+      }
+      {
+        key = "<leader>rk";
+        lspBufAction = "format";
+      }
+      {
+        key = "<leader>rn";
+        lspBufAction = "rename";
+      }
+      {
+        key = "<leader>ca";
+        lspBufAction = "code_action";
+      }
+      {
+        key = "<leader>sh";
+        lspBufAction = "signature_help";
+      }
+      {
+        key = "<leader>ee";
+        action.__raw = "vim.diagnostic.open_float";
+      }
+      {
+        key = "<leader>aa";
+        action.__raw = "vim.diagnostic.setqflist";
+      }
+      {
+        key = "grr";
+        action.__raw = ''require('fzf-lua').lsp_references'';
+        options.desc = "LSP references";
+      }
+      {
+        key = "[c";
+        action.__raw = "function() vim.diagnostic.jump({ count=-1, float=true, wrap = false }) end";
+      }
+      {
+        key = "]c";
+        action.__raw = "function() vim.diagnostic.jump({ count=1, float=true, wrap = false }) end";
+      }
+      {
+        key = "<leader>lr";
+        action = "<CMD>LspRestart<Enter>";
+      }
+      {
+        key = "<leader>ae";
+        action.__raw = ''function() vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.ERROR }) end'';
+        options.desc = "errors";
+      }
+      {
+        key = "<leader>aw";
+        action.__raw = ''function() vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.WARN }) end'';
+        options.desc = "warnings";
+      }
+      {
+        key = "<leader>cl";
+        action = "vim.lsp.codelens.run";
+        options.desc = "run codelens";
+      }
+      {
+        key = "<leader>ds";
+        action.__raw = ''require('fzf-lua').lsp_document_symbols'';
+        options.desc = "document symbols";
+      }
+      {
+        key = "<leader>ws";
+        action.__raw = ''require('fzf-lua').lsp_live_workspace_symbols'';
+        options.desc = "workspace symbols";
+      }
+      {
+        key = "<leader>lfr";
+        action.__raw = ''require('fzf-lua').lsp_finder'';
+        options.desc = "find everywhere";
+      }
+    ];
+  };
+
   plugins = {
     none-ls = {
       enable = true;
@@ -27,7 +185,6 @@
           stylelint = {
             enable = true;
           };
-          # prose/spelling
           write_good = {
             enable = true;
           };
@@ -43,9 +200,6 @@
             };
           };
         };
-        # completion = {
-        #   luasnip.enable = true;
-        # };
       };
     };
 
@@ -67,6 +221,7 @@
             sbt = scalafmt;
             scala = scalafmt;
             md = [ "markdownlint" ];
+            json = [ "jq" ];
             lua = [ "stylua" ];
             nix = [ "nixfmt" ];
             rust = [ "rustfmt" ];
@@ -82,6 +237,9 @@
           };
           markdownlint = {
             command = lib.getExe pkgs.markdownlint-cli;
+          };
+          jq = {
+            command = lib.getExe pkgs.jq;
           };
           nixfmt = {
             command = lib.getExe pkgs.nixfmt-rfc-style;
@@ -105,7 +263,6 @@
             command = lib.getExe pkgs.scalafmt;
           };
           sqlfluff = {
-            # this needs .sqlfluff file to exist in one of the parent directories
             command = lib.getExe pkgs.sqlfluff;
           };
           shfmt = {
@@ -135,224 +292,12 @@
       };
     };
 
-    lsp = {
-      enable = true;
-      inlayHints = true;
-
-      servers = {
-        ts_ls.enable = true; # TS/JS
-        cssls.enable = true; # CSS
-        tailwindcss.enable = true; # TailwindCSS
-        html.enable = true; # HTML
-        pyright.enable = true; # Python
-        marksman.enable = true; # Markdown
-        dockerls.enable = true; # Docker
-        bashls.enable = true; # Bash
-        clangd.enable = true; # C/C++
-        yamlls.enable = true; # YAML
-        jsonls.enable = true; # Json
-        ansiblels.enable = true; # Ansible
-        jdtls.enable = true; # Java
-        tinymist.enable = true; # Typst
-
-        metals = {
-          enable = true;
-          extraOptions = {
-            init_options = {
-              statusBarProvider = "on";
-            };
-          };
-        };
-
-        # TOML
-        taplo = {
-          enable = true;
-          # root_dir.__raw = ''
-          #   require("lspconfig.util").root_pattern('*.toml', '.git')
-          # '';
-        };
-
-        lua_ls = {
-          enable = true;
-          settings.telemetry.enable = false;
-        };
-
-        rust_analyzer = {
-          enable = true;
-          installRustc = true;
-          installCargo = true;
-        };
-
-        # Nix
-        nixd = {
-          enable = true;
-          extraOptions = {
-            offset_encoding = "utf-8";
-          };
-          settings =
-            let
-              # TODO - find out how to make those option
-              host = "hors";
-              system = pkgs.system;
-              flakeOf = dir: ''(builtins.getFlake "/home/deliganli/projects/deliganli/${dir}")'';
-            in
-            {
-              nixpkgs = {
-                expr = "import ${flakeOf "nix"}.inputs.nixpkgs { }";
-              };
-              options = rec {
-                nixos.expr = ''${flakeOf "nix"}.nixosConfigurations.${host}.options'';
-                nixvim.expr = ''${flakeOf "neovim-flake"}.nixvimConfigurations.${system}.default.options'';
-                home-manager.expr = "${nixos.expr}.home-manager.users.type.getSubOptions [ ]";
-                microvm.expr = "${flakeOf "nix"}.inputs.microvm.outputs.nixosModules.microvm-options";
-              };
-            };
-        };
-      };
-
-      keymaps = {
-        diagnostic = {
-          "<leader>ee" = "open_float";
-          "<leader>aa" = "setqflist";
-        };
-        lspBuf = {
-          K = "hover";
-          grr = "references";
-          gd = "definition";
-          gD = "declaration";
-          gi = "implementation";
-          gt = "type_definition";
-          "<leader>rk" = "format";
-          "<leader>rn" = "rename";
-          "<leader>ca" = "code_action";
-          "<leader>sh" = "signature_help";
-        };
-        extra = [
-          {
-            key = "[c";
-            action.__raw = ''
-              function()
-                vim.diagnostic.goto_prev({ wrap = false })
-              end
-            '';
-            options.desc = "prev diagnostic";
-          }
-          {
-            key = "]c";
-            action.__raw = ''
-              function()
-                vim.diagnostic.goto_next({ wrap = false })
-              end
-            '';
-            options.desc = "next diagnostic";
-          }
-          {
-            key = "<leader>ae";
-            action.__raw = ''
-              function()
-                vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.ERROR })
-              end
-            '';
-            options.desc = "errors";
-          }
-          {
-            key = "<leader>aw";
-            action.__raw = ''
-              function()
-                vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.WARN })
-              end
-            '';
-            options.desc = "warnings";
-          }
-          {
-            key = "<leader>lr";
-            action = "<CMD>LspRestart<Enter>";
-            options.desc = "restart LSP";
-          }
-          {
-            key = "<leader>cl";
-            action = "vim.lsp.codelens.run";
-            options.desc = "run codelens";
-          }
-          {
-            key = "<leader>ds";
-            action.__raw = ''
-              require('fzf-lua').lsp_document_symbols
-            '';
-            options.desc = "document symbols";
-          }
-          {
-            key = "<leader>ws";
-            action.__raw = ''
-              require('fzf-lua').lsp_live_workspace_symbols
-            '';
-            options.desc = "workspace symbols";
-          }
-          {
-            key = "<leader>grr";
-            action.__raw = ''
-              require('fzf-lua').lsp_references
-            '';
-            options.desc = "LSP references";
-          }
-        ];
-      };
-    };
-
     lspkind = {
       enable = true;
       extraOptions = {
         maxwidth = 50;
         ellipsis_char = "...";
       };
-    };
-
-    # TODO - revisit below, doesn't work with lspconfig scala plugin
-    # Debugger
-    dap = {
-      enable = true;
-      configurations = {
-        java = [
-          {
-            type = "java";
-            request = "launch";
-            name = "Debug (Attach) - Remote";
-            hostName = "127.0.0.1";
-            port = 5005;
-          }
-        ];
-        scala = [
-          {
-            type = "scala";
-            request = "launch";
-            name = "RunOrTest";
-            metals = {
-              runType = "runOrTestFile";
-              # args = [] "firstArg" "secondArg" "thirdArg" ]; -- here just as an example
-            };
-          }
-          {
-            type = "scala";
-            request = "launch";
-            name = "Test Target";
-            metals = {
-              runType = "testTarget";
-            };
-          }
-        ];
-      };
-    };
-
-    dap-python = {
-      enable = true;
-    };
-
-    dap-ui = {
-      enable = true;
-    };
-
-    dap-virtual-text = {
-      enable = true;
     };
   };
 }
