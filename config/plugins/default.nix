@@ -1,6 +1,13 @@
 { pkgs, ... }:
 {
+  imports = [
+    ./completion.nix
+    ./fzf-lua.nix
+    ./gitsigns.nix
+  ];
+
   plugins = {
+    # tabline
     barbar = {
       enable = true;
       settings = {
@@ -29,8 +36,6 @@
     };
 
     web-devicons.enable = true;
-
-    twilight.enable = true;
 
     colorizer = {
       enable = true;
@@ -68,22 +73,14 @@
       enable = true;
     };
 
-    nvim-autopairs = {
-      enable = true;
-    };
-
     lazygit = {
       enable = true;
       settings = {
-        floating_window_scaling_factor = 1;
+        floating_window_scaling_factor = 0.9;
       };
     };
 
     auto-session = {
-      enable = true;
-    };
-
-    trouble = {
       enable = true;
     };
 
@@ -99,10 +96,6 @@
     };
 
     comment = {
-      enable = true;
-    };
-
-    gitsigns = {
       enable = true;
     };
 
