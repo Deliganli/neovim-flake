@@ -6,14 +6,13 @@
     };
   };
 
-  keymaps = [
+  keymaps = map (x: x // { options.buffer = false; }) [
     {
       mode = "n";
       key = "<leader>hb";
       action.__raw = ''function() require("gitsigns").blame_line{full=true} end'';
       options = {
         desc = "blame line";
-        buffer = true;
       };
     }
     {
@@ -22,7 +21,6 @@
       action.__raw = ''require("gitsigns").blame'';
       options = {
         desc = "blame lines";
-        buffer = true;
       };
     }
     {
@@ -31,7 +29,6 @@
       action = "<cmd>Gitsigns toggle_current_line_blame<CR>";
       options = {
         desc = "toggle blame";
-        buffer = true;
       };
     }
     {
@@ -40,7 +37,6 @@
       action = "<cmd>Gitsigns diffthis<CR>";
       options = {
         desc = "diff";
-        buffer = true;
       };
     }
     {
@@ -49,7 +45,6 @@
       action.__raw = ''function() require("gitsigns").diffthis("~") end'';
       options = {
         desc = "diff";
-        buffer = true;
       };
     }
     {
@@ -58,7 +53,6 @@
       action.__raw = ''require("gitsigns").preview_hunk'';
       options = {
         desc = "Preview hunk";
-        buffer = true;
       };
     }
     {
@@ -67,7 +61,6 @@
       action.__raw = ''require("gitsigns").preview_hunk_inline'';
       options = {
         desc = "Preview hunk";
-        buffer = true;
       };
     }
     {
@@ -76,7 +69,7 @@
       action.__raw = ''
         function()
           if vim.wo.diff then
-            vim.cmd.normal({']c', bang = true})
+            vim.cmd.normal({']h', bang = true})
           else
             gitsigns.nav_hunk('next')
           end
@@ -84,7 +77,6 @@
       '';
       options = {
         desc = "next hunk";
-        buffer = true;
       };
     }
     {
@@ -93,7 +85,7 @@
       action.__raw = ''
         function()
           if vim.wo.diff then
-            vim.cmd.normal({'[c', bang = true})
+            vim.cmd.normal({'[h', bang = true})
           else
             gitsigns.nav_hunk('prev')
           end
@@ -101,7 +93,6 @@
       '';
       options = {
         desc = "prev hunk";
-        buffer = true;
       };
     }
     {
@@ -113,7 +104,6 @@
       action.__raw = ''require("gitsigns").select_hunk'';
       options = {
         desc = "select hunk";
-        buffer = true;
       };
     }
   ];
