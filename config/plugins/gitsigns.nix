@@ -71,7 +71,7 @@
           if vim.wo.diff then
             vim.cmd.normal({']h', bang = true})
           else
-            gitsigns.nav_hunk('next')
+            require("gitsigns").nav_hunk('next')
           end
         end
       '';
@@ -87,7 +87,7 @@
           if vim.wo.diff then
             vim.cmd.normal({'[h', bang = true})
           else
-            gitsigns.nav_hunk('prev')
+            require("gitsigns").nav_hunk('prev')
           end
         end
       '';
