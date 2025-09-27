@@ -23,7 +23,14 @@
       jdtls.enable = true; # Java
       tinymist.enable = true; # Typst
       taplo.enable = true; # TOML
-      rust_analyzer.enable = true; # Rust
+
+      rust_analyzer = {
+        enable = true;
+
+        # make rust-analyzer to be read from the shell
+        # so that tool-chain being newer is not a problem
+        package = null;
+      };
 
       metals = {
         enable = true;
