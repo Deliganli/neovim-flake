@@ -34,6 +34,7 @@
 
       metals = {
         enable = true;
+        package = null;
         settings = {
           init_options = {
             statusBarProvider = "on";
