@@ -134,25 +134,27 @@
 
     nvim-tree = {
       enable = true;
-      disableNetrw = true;
-      hijackCursor = true;
-      diagnostics = {
-        enable = true;
-      };
-      filesystemWatchers = {
-        enable = true;
-      };
-      git = {
-        enable = true;
-      };
-      view = {
-        width = 60;
-        relativenumber = true;
-      };
-      renderer = {
-        highlightOpenedFiles = "all";
-        indentMarkers = {
+      settings = {
+        disableNetrw = true;
+        hijackCursor = true;
+        diagnostics = {
           enable = true;
+        };
+        filesystemWatchers = {
+          enable = true;
+        };
+        git = {
+          enable = true;
+        };
+        view = {
+          width = 60;
+          relativenumber = true;
+        };
+        renderer = {
+          highlightOpenedFiles = "all";
+          indentMarkers = {
+            enable = true;
+          };
         };
       };
     };
@@ -168,11 +170,13 @@
 
     illuminate = {
       enable = true;
-      filetypesDenylist = [
-        "Outline"
-        "alpha"
-        "reason"
-      ];
+      settings = {
+        filetypesDenylist = [
+          "Outline"
+          "alpha"
+          "reason"
+        ];
+      };
     };
 
     schemastore = {

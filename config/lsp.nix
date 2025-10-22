@@ -35,7 +35,7 @@
       metals = {
         enable = true;
         package = null;
-        settings = {
+        config = {
           init_options = {
             statusBarProvider = "on";
           };
@@ -44,13 +44,13 @@
 
       lua_ls = {
         enable = true;
-        settings.telemetry.enable = false;
+        config.telemetry.enable = false;
       };
 
       # Nix
       nixd = {
         enable = true;
-        settings =
+        config =
           let
             # TODO - find out how to make those option
             host = "hors";
@@ -298,14 +298,6 @@
             prepend_args = [ "--inplace" ];
           };
         };
-      };
-    };
-
-    lspkind = {
-      enable = true;
-      extraOptions = {
-        maxwidth = 50;
-        ellipsis_char = "...";
       };
     };
   };
