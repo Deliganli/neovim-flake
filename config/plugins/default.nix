@@ -135,15 +135,9 @@
     nvim-tree = {
       enable = true;
       settings = {
-        disableNetrw = true;
-        hijackCursor = true;
+        disable_netrw = true;
+        hijack_cursor = true;
         diagnostics = {
-          enable = true;
-        };
-        filesystemWatchers = {
-          enable = true;
-        };
-        git = {
           enable = true;
         };
         view = {
@@ -151,10 +145,7 @@
           relativenumber = true;
         };
         renderer = {
-          highlightOpenedFiles = "all";
-          indentMarkers = {
-            enable = true;
-          };
+          highlight_opened_files = "all";
         };
       };
     };
