@@ -19,7 +19,6 @@
       clangd.enable = true; # C/C++
       yamlls.enable = true; # YAML
       jsonls.enable = true; # Json
-      ansiblels.enable = true; # Ansible
       jdtls.enable = true; # Java
       tinymist.enable = true; # Typst
       taplo.enable = true; # TOML
