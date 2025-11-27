@@ -50,25 +50,28 @@
       # Nix
       nixd = {
         enable = true;
-        config =
-          let
-            # TODO - find out how to make those option
-            host = "hors";
-            system = pkgs.system;
-            flakeOf = dir: "(builtins.getFlake \"/home/deliganli/projects/deliganli/${dir}\")";
-          in
-          {
-            settings.nixd = {
-              nixpkgs = {
-                expr = "import ${flakeOf "nix"}.inputs.nixpkgs { }";
-              };
-              options = rec {
-                nixos.expr = "${flakeOf "nix"}.nixosConfigurations.${host}.options";
-                nixvim.expr = "${flakeOf "neovim-flake"}.nixvimConfigurations.${system}.default.options";
-                home-manager.expr = "${nixos.expr}.home-manager.users.type.getSubOptions [ ]";
-              };
-            };
-          };
+        # They are defined in the system settings in another flake, something like below
+        # https://github.com/khaneliman/khanelinix
+        # https://github.com/khaneliman/khanelinix/blob/0fb63d065277c9b4acfc8f21a222db38bc4079df/modules/home/programs/terminal/editors/neovim/default.nix
+        # config =
+        #   let
+        #     host = "my-host-name";
+        #     system = pkgs.system;
+        #     flakeOf = dir: "(builtins.getFlake \"/my-repos/${dir}\")";
+        #     nixDir = flakeOf "projects/nix";
+        #   in
+        #   {
+        #     settings.nixd = {
+        #       nixpkgs = {
+        #         expr = "import ${nixDir}.inputs.nixpkgs { }";
+        #       };
+        #       options = rec {
+        #         nix-darwin.expr = "${nixDir}.darwinConfigurations.${host}.options";
+        #         nixvim.expr = "${flakeOf "this-neovim-flake-dir"}.nixvimConfigurations.${system}.default.options";
+        #         home-manager.expr = "${nix-darwin.expr}.home-manager.users.type.getSubOptions [ ]";
+        #       };
+        #     };
+        #   };
       };
     };
 
