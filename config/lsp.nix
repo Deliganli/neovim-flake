@@ -38,6 +38,27 @@
           init_options = {
             statusBarProvider = "on";
           };
+
+          settings = {
+            metals = {
+              defaultBspToBuildTool = true;
+              enableSemanticHighlighting = true;
+              enableBestEffort = true;
+              autoImportBuild = "all";
+
+              excludedPackages = [
+                "akka.actor.typed.javadsl"
+                "org.apache.pekko.actor.typed.javadsl"
+                "com.github.swagger.akka.javadsl"
+              ];
+
+              inlayHints = {
+                hintsXRayMode.enable = true;
+                inferredTypes.enable = true;
+                closingLabels.enable = true;
+              };
+            };
+          };
         };
       };
 
