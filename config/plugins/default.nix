@@ -60,7 +60,7 @@
         incremental_selection = {
           enable = true;
           keymaps = {
-            init_selection = "gnn";
+            init_selection = "grn";
             node_incremental = "grn";
             node_decremental = "grm";
             scope_incremental = "grc";
