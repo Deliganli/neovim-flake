@@ -117,7 +117,7 @@
     }
     {
       mode = "n";
-      key = "<C-m>";
+      key = "<C-b>";
       action = "<cmd>BufferPrev<cr>";
       options = {
         desc = "cycle to previous buffer";
