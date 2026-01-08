@@ -6,4 +6,8 @@
     ./lsp.nix
     ./plugins
   ];
+
+  dependencies = {
+    tree-sitter.enable = true;
+  };
 }
