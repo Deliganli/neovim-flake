@@ -43,11 +43,6 @@
 
     lualine = {
       enable = true;
-      settings = {
-        options = {
-          theme = "onedark";
-        };
-      };
     };
 
     # Includes all parsers for treesitter
