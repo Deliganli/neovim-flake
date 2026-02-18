@@ -30,10 +30,6 @@
       };
     };
 
-    indent-blankline = {
-      enable = true;
-    };
-
     web-devicons.enable = true;
 
     colorizer = {
