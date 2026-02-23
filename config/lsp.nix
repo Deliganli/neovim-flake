@@ -13,7 +13,6 @@
       tailwindcss.enable = true; # TailwindCSS
       html.enable = true; # HTML
       pyright.enable = true; # Python
-      marksman.enable = true; # Markdown
       dockerls.enable = true; # Docker
       bashls.enable = true; # Bash
       clangd.enable = true; # C/C++
