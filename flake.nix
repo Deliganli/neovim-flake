@@ -39,18 +39,30 @@
       };
 
       # You can define your reusable Nixvim modules here
-      flake.nixvimModules = {
-        default = ./config;
+      flake = {
+        overlays.default = import ./overlays/default.nix;
+
+        nixvimModules = {
+          default = ./config;
+        };
       };
 
       perSystem =
-        { system, ... }:
+        { system, pkgs, ... }:
         {
+          _module.args.pkgs = import inputs.nixpkgs {
+            inherit system;
+            overlays = [ self.overlays.default ];
+          };
+
           # You can define actual Nixvim configurations here
           nixvimConfigurations = rec {
             nvim-ide = inputs.nixvim.lib.evalNixvim {
               inherit system;
-              modules = [ self.nixvimModules.default ];
+              modules = [
+                { nixpkgs.overlays = [ self.overlays.default ]; }
+                self.nixvimModules.default
+              ];
             };
 
             default = nvim-ide;

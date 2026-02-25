@@ -197,14 +197,9 @@
       outline-nvim
     ]
     ++ [
-      (pkgs.vimUtils.buildVimPlugin {
-        name = "kmonad-vim";
-        src = pkgs.fetchFromGitHub {
-          owner = "kmonad";
-          repo = "kmonad-vim";
-          rev = "37978445197ab00edeb5b731e9ca90c2b141723f";
-          hash = "sha256-7PKVOsb3jvuGEnP/LsrDr96wFSQMou2dgnV+hRaI444=";
-        };
-      })
+      # (pkgs.vimUtils.buildVimPlugin {
+      #   name = "vscode-kanata";
+      #   src = pkgs.kanata-lsp;
+      # })
     ];
 }

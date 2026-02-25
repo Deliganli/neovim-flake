@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   lib,
   ...
@@ -92,6 +93,42 @@
         #     };
         #   };
       };
+
+      # temporary until LSP works
+      # https://github.com/rszyma/vscode-kanata/issues/65
+      #   kanata-lsp = {
+      #     enable = true;
+      #     config = {
+      #       cmd = [
+      #         "${lib.getExe pkgs.nodejs}"
+      #         "${pkgs.kanata-lsp}/out/server.js"
+      #         "--stdio"
+      #       ];
+      #       filetypes = [
+      #         "kbd"
+      #         "kanata"
+      #       ];
+      #       root_markers = [
+      #         ".git"
+      #         "kanata.kbd"
+      #       ];
+      #       single_file_support = true;
+      #       init_options = {
+      #         includesAndWorkspaces = "workspace";
+      #         mainConfigFile = "kanata.kbd";
+      #         localKeysVariant = "deflocalkeys-wintercept";
+      #         format = {
+      #           enable = true;
+      #           useDefsrcLayoutOnDeflayers = true;
+      #         };
+      #         envVariables = {
+      #           # workaround: nvim encodes empty table as JSON array; kanata expects map!
+      #           dummy = "value";
+      #         };
+      #         dimInactiveConfigItems = false;
+      #       };
+      #     };
+      #   };
     };
 
     keymaps = [
