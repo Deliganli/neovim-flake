@@ -182,7 +182,7 @@
       }
       {
         key = "grr";
-        action.__raw = ''require('fzf-lua').lsp_references'';
+        action.__raw = "require('fzf-lua').lsp_references";
         options.desc = "LSP references";
       }
       {
@@ -199,12 +199,12 @@
       }
       {
         key = "<leader>ae";
-        action.__raw = ''function() vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.ERROR }) end'';
+        action.__raw = "function() vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.ERROR }) end";
         options.desc = "errors";
       }
       {
         key = "<leader>aw";
-        action.__raw = ''function() vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.WARN }) end'';
+        action.__raw = "function() vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.WARN }) end";
         options.desc = "warnings";
       }
       {
@@ -214,17 +214,17 @@
       }
       {
         key = "<leader>ds";
-        action.__raw = ''require('fzf-lua').lsp_document_symbols'';
+        action.__raw = "require('fzf-lua').lsp_document_symbols";
         options.desc = "document symbols";
       }
       {
         key = "<leader>ws";
-        action.__raw = ''require('fzf-lua').lsp_live_workspace_symbols'';
+        action.__raw = "require('fzf-lua').lsp_live_workspace_symbols";
         options.desc = "workspace symbols";
       }
       {
         key = "<leader>lfr";
-        action.__raw = ''require('fzf-lua').lsp_finder'';
+        action.__raw = "require('fzf-lua').lsp_finder";
         options.desc = "find everywhere";
       }
     ];
