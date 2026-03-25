@@ -288,13 +288,14 @@
           {
             sbt = scalafmt;
             scala = scalafmt;
-            md = [ "markdownlint" ];
             json = [ "jq" ];
             lua = [ "stylua" ];
             nix = [ "nixfmt" ];
             rust = [ "rustfmt" ];
             xml = [ "xmlformat" ];
             javascript = [ "prettierd" ];
+            html = [ "prettierd" ];
+            md = [ "markdownlint" ];
             sql = [ "sqlfluff" ];
             typ = [ "typstyle" ];
             "*" = [ "trim_whitespace" ];
