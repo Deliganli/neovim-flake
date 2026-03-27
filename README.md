@@ -27,4 +27,49 @@ environment.systemPackages = with pkgs; [
 ];
 ```
 
-I don't know how to make a `nixosModule` or `homeManagerModule` yet
+## Extend on Nix
+
+Config can be extended like below;
+
+```nix
+let
+  system = pkgs.stdenv.hostPlatform.system;
+  extendedConf = inputs.neovim-flake.nixvimConfigurations.${system}.default.extendModules {
+    modules = [
+      config.stylix.targets.nixvim.exportedModule
+      {
+        lsp.servers = {
+          nixd = {
+            enable = true;
+
+            config =
+              let
+                flakeOf = dir: ''(builtins.getFlake "/Users/me/${dir}")'';
+                nixDir = flakeOf "nix";
+              in
+              {
+                settings.nixd = {
+                  nixpkgs = {
+                    expr = "import ${nixDir}.inputs.nixpkgs { }";
+                  };
+                  options = rec {
+                    nix-darwin.expr = "${nixDir}.darwinConfigurations.${config.networking.hostName}.options";
+                    nixvim.expr = "${flakeOf "neovim-flake"}.nixvimConfigurations.${system}.default.options";
+                    home-manager.expr = "${nix-darwin.expr}.home-manager.users.type.getSubOptions [ ]";
+                  };
+                };
+              };
+          };
+        };
+      }
+    ];
+  };
+in
+{
+  environment = {
+    systemPackages = [
+      extendedConf.config.build.package
+    ];
+  };
+}
+```
