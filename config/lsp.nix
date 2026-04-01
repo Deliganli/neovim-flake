@@ -35,12 +35,14 @@
         enable = true;
         package = null;
         config = {
-          init_options = {
-            statusBarProvider = "on";
-          };
-
           settings = {
             metals = {
+              # recommended way to use with fidget
+              # https://github.com/scalameta/nvim-metals/blob/main/doc/metals.txt#L101
+              initOptions = {
+                statusBarProvider = "off";
+              };
+
               defaultBspToBuildTool = true;
               enableSemanticHighlighting = true;
               enableBestEffort = true;
