@@ -72,6 +72,16 @@
       # Nix
       nixd = {
         enable = true;
+        config = {
+          cmd = [
+            "nixd"
+            "--inlay-hints=true"
+            # "--semantic-tokens=true"
+            "--nixpkgs-worker-stderr=~/.cache/nvim/nixpkgs-worker.log"
+            "--option-worker-stderr=~/.cache/nvim"
+          ];
+        };
+
         # They are defined in the system settings in another flake, something like below
         # https://github.com/khaneliman/khanelinix
         # https://github.com/khaneliman/khanelinix/blob/0fb63d065277c9b4acfc8f21a222db38bc4079df/modules/home/programs/terminal/editors/neovim/default.nix
