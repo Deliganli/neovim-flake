@@ -46,10 +46,10 @@
 
     # Have a better completion experience
     completeopt = [
-      "menu"
       "menuone"
-      "noinsert"
+      "noselect"
     ];
+
   };
 
   diagnostic.settings = {
