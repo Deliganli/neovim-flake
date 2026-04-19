@@ -4,6 +4,11 @@
 
   enableMan = true;
 
+  highlight = {
+    Normal.ctermbg = "none";
+    NonText.ctermbg = "none";
+  };
+
   globalOpts = {
     number = true; # Display the absolute line number of the current line
     relativenumber = true; # Relative line numbers
