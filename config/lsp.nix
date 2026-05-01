@@ -69,6 +69,10 @@
         config.telemetry.enable = false;
       };
 
+      just = {
+        enable = true;
+      };
+
       # Nix
       nixd = {
         enable = true;
@@ -321,6 +325,9 @@
           };
           jq = {
             command = lib.getExe pkgs.jq;
+          };
+          just = {
+            command = lib.getExe pkgs.just;
           };
           nixfmt = {
             command = lib.getExe pkgs.nixfmt;
