@@ -7,11 +7,8 @@
   ];
 
   plugins = {
-    barbar = {
+    bufferline = {
       enable = true;
-      settings = {
-        animation = false;
-      };
     };
 
     barbecue = {

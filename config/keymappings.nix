@@ -52,7 +52,7 @@
     {
       mode = "n";
       key = "<leader>ps";
-      action = ''<cmd>SessionSearch<cr>'';
+      action = "<cmd>SessionSearch<cr>";
       options = {
         desc = "load last session";
       };
@@ -98,11 +98,11 @@
       options.desc = "format buffer";
     }
 
-    # barbar
+    # bufferline
     {
       mode = "n";
       key = "<leader>q";
-      action = "<cmd>BufferClose!<cr>";
+      action = "<cmd>bdel!<cr>";
       options = {
         desc = "force delete buffer";
       };
@@ -110,7 +110,7 @@
     {
       mode = "n";
       key = "<C-n>";
-      action = "<cmd>BufferNext<cr>";
+      action = "<cmd>bnext<cr>";
       options = {
         desc = "cycle to next buffer";
       };
@@ -118,7 +118,7 @@
     {
       mode = "n";
       key = "<C-b>";
-      action = "<cmd>BufferPrev<cr>";
+      action = "<cmd>bprevious<cr>";
       options = {
         desc = "cycle to previous buffer";
       };
