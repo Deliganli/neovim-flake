@@ -7,10 +7,14 @@
   ];
 
   plugins = {
-    barbar = {
+    bufferline = {
+      enable = true;
+    };
+
+    bufdelete = {
       enable = true;
       settings = {
-        animation = false;
+        next = "cycle";
       };
     };
 

@@ -52,7 +52,7 @@
     {
       mode = "n";
       key = "<leader>ps";
-      action = ''<cmd>SessionSearch<cr>'';
+      action = "<cmd>SessionSearch<cr>";
       options = {
         desc = "load last session";
       };
@@ -96,32 +96,6 @@
         end
       '';
       options.desc = "format buffer";
-    }
-
-    # barbar
-    {
-      mode = "n";
-      key = "<leader>q";
-      action = "<cmd>BufferClose!<cr>";
-      options = {
-        desc = "force delete buffer";
-      };
-    }
-    {
-      mode = "n";
-      key = "<C-n>";
-      action = "<cmd>BufferNext<cr>";
-      options = {
-        desc = "cycle to next buffer";
-      };
-    }
-    {
-      mode = "n";
-      key = "<C-b>";
-      action = "<cmd>BufferPrev<cr>";
-      options = {
-        desc = "cycle to previous buffer";
-      };
     }
 
     # twilight
@@ -193,6 +167,30 @@
       action = "<cmd>bdelete!<cr>";
       options = {
         desc = "force delete buffer and window";
+      };
+    }
+    {
+      mode = "n";
+      key = "<leader>q";
+      action = "<cmd>Bdelete<cr>";
+      options = {
+        desc = "force delete buffer";
+      };
+    }
+    {
+      mode = "n";
+      key = "<C-n>";
+      action = "<cmd>bnext<cr>";
+      options = {
+        desc = "cycle to next buffer";
+      };
+    }
+    {
+      mode = "n";
+      key = "<C-b>";
+      action = "<cmd>bprevious<cr>";
+      options = {
+        desc = "cycle to previous buffer";
       };
     }
     {
