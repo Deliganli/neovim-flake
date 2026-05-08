@@ -88,6 +88,14 @@
       ];
       command = "set filetype=yaml.ansible";
     }
+    {
+      event = [
+        "BufReadPost"
+        "FileReadPost"
+      ];
+      pattern = [ "**" ];
+      command = "normal zR";
+    }
   ];
 
   extraConfigLuaPre = # lua

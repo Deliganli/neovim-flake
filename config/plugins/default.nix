@@ -47,10 +47,11 @@
     # Includes all parsers for treesitter
     treesitter = {
       enable = true;
+      highlight.enable = true;
+      indent.enable = true;
+      folding.enable = false;
+
       settings = {
-        highlight = {
-          enable = true;
-        };
         incremental_selection = {
           enable = true;
           keymaps = {
