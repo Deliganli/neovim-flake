@@ -31,7 +31,7 @@
           "<C-e>" = [
             "hide"
           ];
-          "<C-f>" = [
+          "<C-r>" = [
             "scroll_documentation_down"
             "fallback"
           ];
