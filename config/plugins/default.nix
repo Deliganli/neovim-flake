@@ -186,6 +186,14 @@
     friendly-snippets = {
       enable = true;
     };
+
+    dap = {
+      enable = true;
+    };
+
+    dap-view = {
+      enable = true;
+    };
   };
 
   colorschemes.onedark = {
