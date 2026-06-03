@@ -203,14 +203,16 @@
     }
     {
       mode = "n";
-      key = "gK";
+      key = "gV";
       action.__raw = ''
         function()
-           local new_config = not vim.diagnostic.config().virtual_lines
-           vim.diagnostic.config({ virtual_lines = new_config })
+           vim.diagnostic.config({
+            virtual_lines = not vim.diagnostic.config().virtual_lines,
+            virtual_text = not vim.diagnostic.config().virtual_text
+          })
          end
       '';
-      options.desc = "Toggle diagnostic virtual_lines";
+      options.desc = "Switch between virtual_lines - virtual_text";
     }
   ];
 }
