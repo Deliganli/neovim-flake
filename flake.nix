@@ -43,12 +43,12 @@
         overlays.default = import ./overlays/default.nix;
 
         nixvimModules = {
-          default = ./config;
+          default = import ./config { inherit (inputs) nixpkgs; };
         };
       };
 
       perSystem =
-        { system, pkgs, ... }:
+        { system, ... }:
         {
           _module.args.pkgs = import inputs.nixpkgs {
             inherit system;

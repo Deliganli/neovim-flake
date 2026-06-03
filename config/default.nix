@@ -1,4 +1,4 @@
-{ ... }:
+{ nixpkgs, ... }:
 {
   imports = [
     ./general.nix
@@ -10,4 +10,6 @@
   dependencies = {
     tree-sitter.enable = true;
   };
+
+  nixpkgs.source = nixpkgs;
 }
