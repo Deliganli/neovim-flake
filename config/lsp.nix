@@ -269,9 +269,6 @@
           stylelint = {
             enable = true;
           };
-          write_good = {
-            enable = true;
-          };
           proselint = {
             enable = true;
           };
