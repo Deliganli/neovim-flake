@@ -3,7 +3,7 @@
   imports = [
     ./completion.nix
     ./fzf-lua.nix
-    ./gitsigns.nix
+    ./git.nix
   ];
 
   plugins = {
@@ -68,13 +68,6 @@
       enable = true;
     };
 
-    lazygit = {
-      enable = true;
-      settings = {
-        floating_window_scaling_factor = 0.9;
-      };
-    };
-
     auto-session = {
       enable = true;
     };
@@ -91,10 +84,6 @@
     };
 
     comment = {
-      enable = true;
-    };
-
-    gitlinker = {
       enable = true;
     };
 
