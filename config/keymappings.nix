@@ -23,7 +23,7 @@
 
     {
       mode = "n";
-      key = "<leader>tn";
+      key = "<leader>tt";
       action = "<cmd>NvimTreeFindFile<CR>";
       options = {
         desc = "nvim-tree find file";
@@ -191,6 +191,30 @@
       action = "<cmd>bprevious<cr>";
       options = {
         desc = "cycle to previous buffer";
+      };
+    }
+    {
+      mode = "n";
+      key = "<leader>tn";
+      action = "<cmd>tabnext<CR>";
+      options = {
+        desc = "cycle to next tab";
+      };
+    }
+    {
+      mode = "n";
+      key = "<leader>tp";
+      action = "<cmd>tabprevious<CR>";
+      options = {
+        desc = "cycle to previous tab";
+      };
+    }
+    {
+      mode = "n";
+      key = "<leader>tq";
+      action = "<cmd>tabclose<CR>";
+      options = {
+        desc = "close tab";
       };
     }
     {
