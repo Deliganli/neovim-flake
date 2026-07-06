@@ -22,6 +22,7 @@
       jdtls.enable = true; # Java
       tinymist.enable = true; # Typst
       taplo.enable = true; # TOML
+      tilt_ls.enable = true; # Tiltfile
 
       rust_analyzer = {
         enable = true;

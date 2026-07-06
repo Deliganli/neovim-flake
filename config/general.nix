@@ -96,6 +96,13 @@
       pattern = [ "**" ];
       command = "normal zR";
     }
+    {
+      event = [
+        "BufRead"
+      ];
+      pattern = [ "Tiltfile" ];
+      command = "set filetype=tiltfile";
+    }
   ];
 
   extraConfigLuaPre = # lua
