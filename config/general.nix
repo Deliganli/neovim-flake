@@ -2,8 +2,6 @@
 {
   globals.mapleader = ",";
 
-  enableMan = true;
-
   highlight = {
     Normal.ctermbg = "none";
     NonText.ctermbg = "none";
