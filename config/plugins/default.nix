@@ -101,7 +101,10 @@
 
     markdown-preview = {
       enable = true;
-      settings.theme = "dark";
+      settings = {
+        theme = "dark";
+        auto_close = 0;
+      };
     };
 
     markview = {

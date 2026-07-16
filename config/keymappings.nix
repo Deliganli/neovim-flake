@@ -152,12 +152,12 @@
       options.desc = "prev diagnostic";
     }
 
-    # Markview
+    # MarkdownPreview
     {
       mode = "n";
       key = "<leader>mt";
-      action = "<cmd>Markview<cr>";
-      options.desc = "Toggle Markview";
+      action = "<cmd>MarkdownPreviewToggle<cr>";
+      options.desc = "Toggle MarkdownPreview";
     }
 
     # others
