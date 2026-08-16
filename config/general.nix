@@ -105,6 +105,8 @@
 
   extraConfigLuaPre = # lua
     ''
+      vim.treesitter.language.register("starlark", "tiltfile")
+
       -- reduce press to enter messages
       vim.opt.shortmess:remove("F")
       vim.opt.shortmess:append("c")
@@ -119,3 +121,4 @@
       require("outline").setup()
     '';
 }
+
