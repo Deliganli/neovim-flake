@@ -309,7 +309,7 @@
             xml = [ "xmlformat" ];
             javascript = [ "prettierd" ];
             html = [ "prettierd" ];
-            md = [ "markdownlint" ];
+            markdown = [ "markdownlint" ];
             sql = [ "sqlfluff" ];
             typ = [ "typstyle" ];
             "*" = [ "trim_whitespace" ];
